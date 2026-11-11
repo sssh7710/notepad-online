@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: my-notepad
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/me
+    envVars:
+      - key: NODE_VERSION
+        value: '24'
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
